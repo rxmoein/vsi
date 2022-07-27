@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+
+
+@include mat.core();
+$vsi-light: create-light-vsi-theme($vsi-blue-grey-palette, $vsi-blue-grey-palette, $vsi-red-palette, 'light');
+
+// Default theme
+@include mat.button-theme(map-get($vsi-light, 'material'));
+@include mat.form-field-theme(map-get($vsi-light, 'material'));
+@include mat.input-theme(map-get($vsi-light, 'material'));
+@include mat.snack-bar-theme(map-get($vsi-light, 'material'));
+@include mat.progress-spinner-theme(map-get($vsi-light, 'material'));
+@include mat.toolbar-theme(map-get($vsi-light, 'material'));
+@include mat.dialog-theme(map-get($vsi-light, 'material'));
+@include mat.list-theme(map-get($vsi-light, 'material'));
+@include mat.autocomplete-theme(map-get($vsi-light, 'material'));
+@include mat.progress-bar-theme(map-get($vsi-light, 'material'));
+@include mat.sidenav-theme(map-get($vsi-light, 'material'));
+@include mat.menu-theme(map-get($vsi-light, 'material'));
+@include mat.checkbox-theme(map-get($vsi-light, 'material'));
+@include mat.tabs-theme(map-get($vsi-light, 'material'));

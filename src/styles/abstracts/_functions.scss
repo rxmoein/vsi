@@ -1,0 +1,5 @@
+$context-size: 16;
+
+@function em($pixels) {
+    @return #{$pixels/$context-size}em;
+}
