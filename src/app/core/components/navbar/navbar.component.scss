@@ -1,0 +1,10 @@
+.navbar {
+    &__content {
+        display: flex;
+        align-items: center;
+
+        button {
+            margin-right: 16px;
+        }
+    }
+}
