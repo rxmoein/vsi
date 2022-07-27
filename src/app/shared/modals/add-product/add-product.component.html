@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>New Product</h2>
+
+<div [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" name="name" id="name" formControlName="name">
+        <mat-error *ngIf="form.controls['name'].invalid">Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Code</mat-label>
+        <input matInput type="text" name="code" id="code" formControlName="code">
+        <mat-error *ngIf="form.controls['code'].invalid">Code is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Base Price</mat-label>
+        <input matInput type="number" name="basePrice" id="basePrice" formControlName="basePrice">
+        <mat-error *ngIf="form.controls['basePrice'].invalid">Base price is required</mat-error>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</div>

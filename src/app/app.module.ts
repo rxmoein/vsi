@@ -6,8 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { productReducer as product } from './core/store/product.reducer';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
