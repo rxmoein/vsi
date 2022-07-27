@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wrapper.component.scss']
 })
 export class WrapperComponent implements OnInit {
-  isSidenavOpen = false;
+  isSidenavOpen = true;
   constructor() { }
 
   ngOnInit(): void {

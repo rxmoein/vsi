@@ -3,8 +3,8 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { WrapperComponent } from './components/wrapper';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
+import { NavbarComponent } from './components/navbar';
 
 @NgModule({
   declarations: [

@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'vsi-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
+  @Output() menu = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onMenu() {
+    this.menu.emit();
   }
-
 }
