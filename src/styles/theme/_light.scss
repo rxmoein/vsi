@@ -18,4 +18,5 @@
     @include mat.menu-color(map-get($vsi-light, 'material'));
     @include mat.checkbox-color(map-get($vsi-light, 'material'));
     @include mat.tabs-color(map-get($vsi-light, 'material'));
+    @include mat.table-color(map-get($vsi-light, 'material'));
 }
