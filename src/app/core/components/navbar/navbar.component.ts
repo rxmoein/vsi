@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductModalComponent } from 'src/app/shared/modals/add-product/add-product.component';
+import { ChangeTaxModalComponent } from 'src/app/shared/modals/change-tax-modal/change-tax-modal.component';
 
 @Component({
   selector: 'vsi-navbar',
@@ -19,6 +20,12 @@ export class NavbarComponent {
   onAdd() {
     this.dialog.open(AddProductModalComponent, {
       width: '300px',
-    })
+    });
+  }
+
+  onChangeTax() {
+    this.dialog.open(ChangeTaxModalComponent, {
+      width: '300px',
+    });
   }
 }

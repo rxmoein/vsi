@@ -7,3 +7,4 @@ export const setProduct = createAction('[Product/API] Set Product', props<{ prod
 export const upsertProduct = createAction('[Product/API] Upsert Product', props<{ product: Product }>());
 export const deleteProduct = createAction('[Product/API] Delete Product', props<{ id: number }>());
 export const setEditingProduct = createAction('[Product/API] Set Editing product', props<{ id: number }>());
+export const setTaxPercentage = createAction('[Product/API] Set Tax percentage', props<{ value: number }>());

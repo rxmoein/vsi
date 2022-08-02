@@ -19,3 +19,8 @@ export const selectEditingProductId = createSelector(
     selectProductState,
     (state) => state.editingProductId,
 );
+
+export const selectTaxPercentage = createSelector(
+    selectProductState,
+    (state) => state.taxPercentage,
+);

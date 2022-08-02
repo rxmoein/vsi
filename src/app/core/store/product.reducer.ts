@@ -6,6 +6,7 @@ import { Product } from '../models/product';
 
 export interface ProductState extends EntityState<Product> {
     editingProductId: number | null;
+    taxPercentage: number;
 }
 
 export function selectProductId(a: Product): number {
@@ -23,14 +24,7 @@ export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
 
 export const initialState: ProductState = adapter.getInitialState({
     editingProductId: null,
-    entities: [
-        {
-            id: 1,
-            basePrice: 10,
-            code: 'B3245',
-            name: 'T-Shirt'
-        }
-    ]
+    taxPercentage: 20,
 });
 
 export const productReducer = createReducer(
@@ -52,5 +46,8 @@ export const productReducer = createReducer(
     }),
     on(ProductActions.setEditingProduct, (state, { id }) => {
         return { ...state, editingProductId: id };
+    }),
+    on(ProductActions.setTaxPercentage, (state, { value }) => {
+        return { ...state, taxPercentage: value };
     }),
 );

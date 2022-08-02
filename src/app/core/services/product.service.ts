@@ -40,4 +40,12 @@ export class ProductService {
   deleteProduct(product: Product) {
     this.store.dispatch(actions.deleteProduct({ id: product.id }))
   }
+
+  setTaxPercentage(value: number) {
+    this.store.dispatch(actions.setTaxPercentage({ value }));
+  }
+
+  getTaxPercentage() {
+    return this.store.select(selectors.selectTaxPercentage);
+  }
 }
