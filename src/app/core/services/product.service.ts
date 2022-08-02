@@ -34,6 +34,10 @@ export class ProductService {
   }
 
   addProduct(product: Product) {
-    this.store.dispatch(actions.addProduct({ product }))
+    this.store.dispatch(actions.addProduct({ product }));
+  }
+
+  deleteProduct(product: Product) {
+    this.store.dispatch(actions.deleteProduct({ id: product.id }))
   }
 }

@@ -5,5 +5,5 @@ export const loadProducts = createAction('[Product/API] Load Products', props<{ 
 export const addProduct = createAction('[Product/API] Add Product', props<{ product: Product }>());
 export const setProduct = createAction('[Product/API] Set Product', props<{ product: Product }>());
 export const upsertProduct = createAction('[Product/API] Upsert Product', props<{ product: Product }>());
-export const deleteProduct = createAction('[Product/API] Delete Product', props<{ id: string }>());
+export const deleteProduct = createAction('[Product/API] Delete Product', props<{ id: number }>());
 export const setEditingProduct = createAction('[Product/API] Set Editing product', props<{ id: number }>());

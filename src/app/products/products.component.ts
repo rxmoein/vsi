@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../core/services/product.service';
 import { Product } from '../core/models/product';
 import { SnackbarService } from '../core/services/snackbar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmModalComponent } from '../shared/modals/confirm-modal';
 
 @Component({
   selector: 'vsi-products',
@@ -15,6 +17,7 @@ export class ProductsComponent implements OnInit {
   form = new UntypedFormGroup({});
 
   constructor(
+    private dialog: MatDialog,
     private fb: UntypedFormBuilder,
     private productService: ProductService,
     private snackbarService: SnackbarService,
@@ -57,5 +60,22 @@ export class ProductsComponent implements OnInit {
 
     this.productService.updateProduct(this.form.value);
     this.productService.setEditing(null);
+  }
+
+  onDelete(product: Product) {
+    const ref = this.dialog.open(ConfirmModalComponent, {
+      width: '400px',
+      autoFocus: false,
+      data: {
+        title: 'Delete Product',
+        message: `Are you sure to delete ${product.name}?`,
+      }
+    });
+
+    ref.afterClosed().subscribe(res => {
+      if (res) {
+        this.productService.deleteProduct(product);
+      }
+    });
   }
 }
