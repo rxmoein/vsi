@@ -1,8 +1,9 @@
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from '../core/services/product.service';
 import { Product } from '../core/models/product';
+import { SnackbarService } from '../core/services/snackbar.service';
 
 @Component({
   selector: 'vsi-products',
@@ -16,13 +17,15 @@ export class ProductsComponent implements OnInit {
   constructor(
     private fb: UntypedFormBuilder,
     private productService: ProductService,
+    private snackbarService: SnackbarService,
   ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: [''],
-      code: [''],
-      basePrice: [0],
+      id: [],
+      name: ['', Validators.required],
+      code: ['', Validators.required],
+      basePrice: [0, Validators.required],
     });
   }
 
@@ -37,11 +40,22 @@ export class ProductsComponent implements OnInit {
   onEdit(product: Product | null): void {
     if (product) {
       this.form.patchValue({
+        id: product.id,
         name: product.name,
         code: product.code,
         basePrice: product.basePrice,
       });
     }
     this.productService.setEditing(product);
+  }
+
+  onEditDone() {
+    if (this.form.invalid) {
+      this.snackbarService.error('All the fields are required!');
+      return;
+    }
+
+    this.productService.updateProduct(this.form.value);
+    this.productService.setEditing(null);
   }
 }

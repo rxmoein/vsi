@@ -29,6 +29,10 @@ export class ProductService {
     this.store.dispatch(actions.setEditingProduct({ id: product.id }));
   }
 
+  updateProduct(product: Product) {
+    this.store.dispatch(actions.upsertProduct({ product }));
+  }
+
   addProduct(product: Product) {
     this.store.dispatch(actions.addProduct({ product }))
   }

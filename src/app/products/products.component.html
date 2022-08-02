@@ -40,7 +40,7 @@
                     <th mat-header-cell *matHeaderCellDef> Base Price (EUR)</th>
                     <td mat-cell *matCellDef="let element" [formGroup]="form">
                         <ng-container *ngIf="(editingProduct | async) else elementCode">
-                            <input type="text" id="basePrice" name="basePrice" formControlName="basePrice">
+                            <input type="number" id="basePrice" name="basePrice" formControlName="basePrice">
                         </ng-container>
                         <ng-template #elementCode>
                             {{element.basePrice | currency:'€'}}
@@ -52,7 +52,7 @@
                     <th mat-header-cell *matHeaderCellDef></th>
                     <td mat-cell *matCellDef="let element" class="small-col">
                         <ng-container *ngIf="(editingProduct | async) else normalActions">
-                            <button mat-icon-button color="primary">
+                            <button mat-icon-button color="primary" (click)="onEditDone()">
                                 <mat-icon>done</mat-icon>
                             </button>
                             <button mat-icon-button (click)="onEdit(null)">
@@ -61,11 +61,11 @@
                         </ng-container>
 
                         <ng-template #normalActions>
-                            <button mat-icon-button color="warn">
-                                <mat-icon>delete</mat-icon>
-                            </button>
                             <button mat-icon-button (click)="onEdit(element)">
                                 <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn">
+                                <mat-icon>delete</mat-icon>
                             </button>
                         </ng-template>
                     </td>
