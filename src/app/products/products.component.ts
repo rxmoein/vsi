@@ -1,11 +1,14 @@
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
+import { ChangeTaxModalComponent } from '../shared/modals/change-tax-modal/change-tax-modal.component';
+import { AddProductModalComponent } from '../shared/modals/add-product/add-product.component';
+import { ConfirmModalComponent } from '../shared/modals/confirm-modal';
+import { SnackbarService } from '../core/services/snackbar.service';
 import { ProductService } from '../core/services/product.service';
 import { Product } from '../core/models/product';
-import { SnackbarService } from '../core/services/snackbar.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmModalComponent } from '../shared/modals/confirm-modal';
+
 
 @Component({
   selector: 'vsi-products',
@@ -84,6 +87,18 @@ export class ProductsComponent implements OnInit {
       if (res) {
         this.productService.deleteProduct(product);
       }
+    });
+  }
+
+  onAdd() {
+    this.dialog.open(AddProductModalComponent, {
+      width: '300px',
+    });
+  }
+
+  onChangeTax() {
+    this.dialog.open(ChangeTaxModalComponent, {
+      width: '300px',
     });
   }
 }

@@ -1,5 +1,17 @@
 <div class="container">
-    <h1>Products List</h1>
+    <h1>
+        <div>
+            Products List
+        </div>
+        <div>
+            <button mat-button (click)="onChangeTax()">
+                Change Tax
+            </button>
+            <button mat-icon-button (click)="onAdd()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </h1>
     <mat-card>
         <mat-card-content>
             <p *ngIf="!((products | async) || []).length">There is no data available. Try adding a product!</p>
@@ -87,7 +99,7 @@
     <div class="products-list-footer">
         <div>Subtotal: {{subTotal | async | currency: '€'}}</div>
         <div>
-            <button color="primary" mat-raised-button>Continue</button>
+            <a color="primary" mat-raised-button routerLink="/billing">Continue</a>
         </div>
     </div>
 </div>
