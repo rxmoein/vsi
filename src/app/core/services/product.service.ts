@@ -5,6 +5,7 @@ import { ProductState } from '../store/product.reducer';
 import * as selectors from '../store/product.selector';
 import * as actions from '../store/product.actions';
 import { Product } from '../models/product';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,17 @@ export class ProductService {
 
   getTaxPercentage() {
     return this.store.select(selectors.selectTaxPercentage);
+  }
+
+  getSubtotal(): Observable<number> {
+    return this.getAll().pipe(map(all => {
+      return all.reduce((a, b) => {
+        let p = 0;
+        this.getTaxPercentage().subscribe(v => p = v).unsubscribe();
+        const tax = (p / 100) * b.basePrice;
+
+        return a + (b.basePrice + tax);
+      }, 0);
+    }));
   }
 }

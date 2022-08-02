@@ -13,7 +13,7 @@ import { ConfirmModalComponent } from '../shared/modals/confirm-modal';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'code', 'basePrice', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'code', 'basePrice', 'priceAfterTax', 'actions'];
   form = new UntypedFormGroup({});
 
   constructor(
@@ -38,6 +38,14 @@ export class ProductsComponent implements OnInit {
 
   get editingProduct() {
     return this.productService.getEditingProduct();
+  }
+
+  get taxPercentage() {
+    return this.productService.getTaxPercentage();
+  }
+
+  get subTotal() {
+    return this.productService.getSubtotal();
   }
 
   onEdit(product: Product | null): void {

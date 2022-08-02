@@ -5,6 +5,7 @@ import { MaterialModule } from './material';
 import { AddProductModalComponent } from './modals/add-product/add-product.component';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 import { ChangeTaxModalComponent } from './modals/change-tax-modal/change-tax-modal.component';
+import { PriceAfterTaxPipe } from './pipes/price-after-tax.pipe';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ChangeTaxModalComponent } from './modals/change-tax-modal/change-tax-mo
     AddProductModalComponent,
     ConfirmModalComponent,
     ChangeTaxModalComponent,
+    PriceAfterTaxPipe,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { ChangeTaxModalComponent } from './modals/change-tax-modal/change-tax-mo
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    PriceAfterTaxPipe,
   ]
 })
 export class SharedModule { }

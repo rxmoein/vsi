@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
 import { AddProductModalComponent } from 'src/app/shared/modals/add-product/add-product.component';
 import { ChangeTaxModalComponent } from 'src/app/shared/modals/change-tax-modal/change-tax-modal.component';
 
