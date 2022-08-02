@@ -1,7 +1,7 @@
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 
-import { ProductService } from 'src/app/core/services/product.service';
+import { ProductService } from '../../../core/services/product.service';
 import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({

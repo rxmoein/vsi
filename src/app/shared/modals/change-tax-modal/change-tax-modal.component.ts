@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
 
 import { AddProductModalComponent } from '../add-product/add-product.component';
-import { ProductService } from 'src/app/core/services/product.service';
+import { ProductService } from '../../../core/services/product.service';
 
 @Component({
   selector: 'vsi-change-tax-modal',
