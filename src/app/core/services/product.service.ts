@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { ProductState } from '../store/product.reducer';
 import * as selectors from '../store/product.selector';
 import * as actions from '../store/product.actions';
 import { Product } from '../models/product';
-import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
