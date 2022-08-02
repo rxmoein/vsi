@@ -14,3 +14,8 @@ export const selectAllProducts = createSelector(
     selectProductState,
     selectAll
 );
+
+export const selectEditingProductId = createSelector(
+    selectProductState,
+    (state) => state.editingProductId,
+);

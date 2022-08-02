@@ -17,6 +17,18 @@ export class ProductService {
     return this.store.select(selectors.selectAllProducts);
   }
 
+  getEditingProduct() {
+    return this.store.select(selectors.selectEditingProductId);
+  }
+
+  setEditing(product: Product | null) {
+    if (!product) {
+      this.store.dispatch(actions.setEditingProduct({ id: 0 }));
+      return;
+    }
+    this.store.dispatch(actions.setEditingProduct({ id: product.id }));
+  }
+
   addProduct(product: Product) {
     this.store.dispatch(actions.addProduct({ product }))
   }

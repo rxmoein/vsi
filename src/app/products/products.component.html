@@ -1,0 +1,79 @@
+<div class="container">
+    <h1>Products List</h1>
+    <mat-card>
+        <mat-card-content>
+            <p *ngIf="!((products | async) || []).length">There is no data available. Try adding a product!</p>
+
+            <table *ngIf="((products | async) || []).length" mat-table [dataSource]="(products |async) || []">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID. </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.id}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element" [formGroup]="form">
+                        <ng-container *ngIf="(editingProduct | async) else elementID">
+                            <input type="text" id="name" name="name" formControlName="name">
+                        </ng-container>
+                        <ng-template #elementID>
+                            {{element.name}}
+                        </ng-template>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="code">
+                    <th mat-header-cell *matHeaderCellDef>Code</th>
+                    <td mat-cell *matCellDef="let element" [formGroup]="form">
+                        <ng-container *ngIf="(editingProduct | async) else elementCode">
+                            <input type="text" id="code" name="code" formControlName="code">
+                        </ng-container>
+                        <ng-template #elementCode>
+                            {{element.code}}
+                        </ng-template>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="basePrice">
+                    <th mat-header-cell *matHeaderCellDef> Base Price (EUR)</th>
+                    <td mat-cell *matCellDef="let element" [formGroup]="form">
+                        <ng-container *ngIf="(editingProduct | async) else elementCode">
+                            <input type="text" id="basePrice" name="basePrice" formControlName="basePrice">
+                        </ng-container>
+                        <ng-template #elementCode>
+                            {{element.basePrice | currency:'€'}}
+                        </ng-template>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" class="small-col">
+                        <ng-container *ngIf="(editingProduct | async) else normalActions">
+                            <button mat-icon-button color="primary">
+                                <mat-icon>done</mat-icon>
+                            </button>
+                            <button mat-icon-button (click)="onEdit(null)">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </ng-container>
+
+                        <ng-template #normalActions>
+                            <button mat-icon-button color="warn">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <button mat-icon-button (click)="onEdit(element)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </ng-template>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

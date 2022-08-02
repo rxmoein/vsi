@@ -7,6 +7,17 @@ const routes: Routes = [
   {
     path: '',
     component: WrapperComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'products',
+      },
+      {
+        path: 'products',
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
+      }
+    ],
   }
 ];
 

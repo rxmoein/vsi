@@ -23,6 +23,14 @@ export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>({
 
 export const initialState: ProductState = adapter.getInitialState({
     editingProductId: null,
+    entities: [
+        {
+            id: 1,
+            basePrice: 10,
+            code: 'B3245',
+            name: 'T-Shirt'
+        }
+    ]
 });
 
 export const productReducer = createReducer(
@@ -41,5 +49,8 @@ export const productReducer = createReducer(
     }),
     on(ProductActions.loadProducts, (state, { products }) => {
         return adapter.setAll(products, state);
+    }),
+    on(ProductActions.setEditingProduct, (state, { id }) => {
+        return { ...state, editingProductId: id };
     }),
 );

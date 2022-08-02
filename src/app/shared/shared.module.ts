@@ -18,6 +18,8 @@ import { AddProductModalComponent } from './modals/add-product/add-product.compo
   ],
   exports: [
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }
